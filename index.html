@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;10題測出你的靈魂原型&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.question, .result, .email-collection { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-btn { margin: 10px; padding: 10px 20px; font-size: 18px; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="start"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;🔮 10題測出你的靈魂原型！&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;探索你的天賦與使命，讓世界看見真實的你！&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="startQuiz()"&gt;開始測驗！&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="quiz" class="question"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="emailCollection" class="email-collection"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;🎁 免費領取你的靈魂解析書&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;輸入Email或加入LINE，解鎖完整個性報告！&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="email" id="email" placeholder="輸入你的Email"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button onclick="submitEmail()"&gt;領取解析&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;a href="https://line.me/R/ti/p/你的LINE官方網址" target="_blank"&gt;👉 加入LINE好友直接領取&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="result" class="result"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const questions = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"週末你最想做什麼？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"面對新挑戰，你通常？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"遇到問題時你會？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"假日想去哪裡？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"你喜歡的工作模式？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"遇到陌生人時？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"最吸引你的人是？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"你最想擁有的超能力？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"朋友形容你的關鍵字是？",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>"如果中了1億，你會？"</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const options = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["冒險", "安靜閱讀", "狂歡聚會", "計畫未來"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["馬上行動", "觀察分析", "找人討論", "列出計畫"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["立即解決", "沉思反省", "求助他人", "戰略規劃"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["山林探險", "宅在家", "城市夜生活", "文化巡禮"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["彈性自由", "規律固定", "團隊合作", "自主決策"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["主動聊天", "靜靜觀察", "先打招呼", "仔細聆聽"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["勇敢無畏的人", "聰明深沉的人", "有藝術氣息的人", "溫暖可靠的人"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["瞬間移動", "讀心術", "創造幻象", "治癒能力"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["熱情", "理性", "創意", "溫柔"],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>["環遊世界", "投資未來", "開創夢想", "幫助他人"]</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scores = [0, 0, 0, 0, 0, 0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resultTexts = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "冒險家型", short: "你天生為自由而生，越困難越興奮！", long: "你是行動派，勇敢無畏，最適合需要挑戰的職場與生活。人生座右銘：不冒險，就是最大的風險。" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "智慧家型", short: "你擁有遠見與智慧，是天生的領導者。", long: "你理性且有深度，擅長策略與規劃。適合管理層、顧問、學者等角色，善於解讀世界運作的規律。" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "藝術家型", short: "你的靈魂為創造而生，總是靈感滿滿！", long: "你對美感與創意非常敏銳，適合藝術、設計、行銷領域，天生能用作品感動人心。" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "守護者型", short: "你溫柔堅定，總是別人最安心的後盾。", long: "你有高度的責任感與耐心，適合教育、照護、社工、醫療領域，是團體中的靈魂支柱。" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "魔法師型", short: "你是奇蹟的製造者，能將不可能變可能。", long: "你擁有強大的直覺力與轉化力，適合創業、心靈工作或任何需要突破框架的領域。" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ title: "夢想家型", short: "你是點燃希望的人，讓世界看見可能。", long: "你充滿理想，容易感染周圍的人，適合創業、非營利組織、創新型產業，是未來世界的種子。" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentQuestion = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startQuiz() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('start').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('quiz').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showQuestion() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentQuestion &gt;= questions.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('quiz').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('emailCollection').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let quizDiv = document.getElementById('quiz');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>quizDiv.innerHTML = `&lt;h2&gt;${questions[currentQuestion]}&lt;/h2&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>options[currentQuestion].forEach((opt, idx) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quizDiv.innerHTML += `&lt;button class='option-btn' onclick='selectOption(${idx})'&gt;${opt}&lt;/button&gt;&lt;br&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function selectOption(choice) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>scores[choice]++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentQuestion++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showQuestion();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function submitEmail() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const email = document.getElementById('email').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!email) { alert('請輸入Email！'); return; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('emailCollection').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showResult();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showResult() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let maxIndex = scores.indexOf(Math.max(...scores));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let res = resultTexts[maxIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('result').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('result').innerHTML = `&lt;h2&gt;${res.title}&lt;/h2&gt;&lt;p&gt;${res.short}&lt;/p&gt;&lt;p&gt;${res.long}&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
