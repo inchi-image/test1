@@ -80,7 +80,6 @@
   </style>
 </head>
 <body>
-
 <div id="start">
   <h1>🔮 10題測出你的靈魂原型！</h1>
   <p>探索你的天賦與使命，讓世界看見真實的你！</p>
@@ -98,7 +97,6 @@
 </div>
 
 <div id="result" class="result"></div>
-
 <script>
 const questions = [
   "週末你最想做什麼？",
@@ -143,7 +141,76 @@ const resultTexts = [
     field: "創業、旅遊冒險、活動策劃、行銷推廣。",
     partner: "守護者型——提供穩定支持，平衡你的冒險衝動。"
   },
-  // 其他5個型別照這個格式
+  {
+    title: "智慧家型",
+    image: "https://i.imgur.com/9XEIgp2.png",
+    personality: "深思熟慮，熱愛知識與探索真理。",
+    energy: "沉靜專注，喜歡深入研究。",
+    information: "重視邏輯推演與全局思考。",
+    decision: "以理性與事實為依據。",
+    lifestyle: "有系統，重視規劃與預見。",
+    emotion: "冷靜克制，情感含蓄但堅定。",
+    strength: "洞察力強、計劃性高、策略思維。",
+    suggestion: "學習打開心房，讓情感參與生活。",
+    field: "管理、金融、科技、顧問諮詢。",
+    partner: "夢想家型——激發你的靈感與創新思考。"
+  },
+  {
+    title: "藝術家型",
+    image: "https://i.imgur.com/GKTXhke.png",
+    personality: "敏感細膩，追求美感與自我表達。",
+    energy: "情境式開放，隨情緒切換。",
+    information: "憑感受捕捉世界，重視靈感。",
+    decision: "以情感和直覺作決策。",
+    lifestyle: "自由奔放，追尋靈魂的召喚。",
+    emotion: "真摯深情，感同身受。",
+    strength: "創意無限、情感豐沛、感染力強。",
+    suggestion: "善用紀律與行動，將靈感轉為現實。",
+    field: "設計、藝術、寫作、品牌行銷。",
+    partner: "智慧家型——幫助你將靈感具體化並落地實現。"
+  },
+  {
+    title: "守護者型",
+    image: "https://i.imgur.com/FGjc1Nt.png",
+    personality: "溫柔穩定，重視責任與安全感。",
+    energy: "內斂沉著，專注於關係深度。",
+    information: "務實重細節，注重具體成果。",
+    decision: "考慮人際與價值感受。",
+    lifestyle: "有條理，偏好穩定日常。",
+    emotion: "深情可靠，默默守護所愛。",
+    strength: "責任感強、細心周到、支持力佳。",
+    suggestion: "學會適時劃界，避免過度負擔他人。",
+    field: "教育、心理輔導、醫療照護、社工。",
+    partner: "冒險家型——帶你體驗世界的多彩面貌。"
+  },
+  {
+    title: "魔法師型",
+    image: "https://i.imgur.com/Wg4xAe0.png",
+    personality: "直覺敏銳，擁有改變世界的能量。",
+    energy: "自由變化，按內心需求調整步調。",
+    information: "整合感覺與未來預見。",
+    decision: "靈活直覺，突破常規。",
+    lifestyle: "彈性高，追求內外一致。",
+    emotion: "神秘深層，具有療癒氣質。",
+    strength: "轉化力強、洞察未來、跨界整合。",
+    suggestion: "練習保持專注，避免能量分散。",
+    field: "創業、心靈療癒、新科技領域、變革推動。",
+    partner: "藝術家型——激盪出驚人的創造火花。"
+  },
+  {
+    title: "夢想家型",
+    image: "https://i.imgur.com/IXJH2lY.png",
+    personality: "充滿希望，善於啟發與感動人心。",
+    energy: "隨心而動，自由自在。",
+    information: "注重大局與願景思考。",
+    decision: "憑信念與價值觀選擇。",
+    lifestyle: "靈活自由，重視內心使命。",
+    emotion: "溫暖開放，樂於分享與感召。",
+    strength: "啟發人心、帶動團隊、創造未來。",
+    suggestion: "細化夢想為具體行動，避免流於空想。",
+    field: "社會創新、教育、領導發展、社群經營。",
+    partner: "魔法師型——共同把夢想轉化為現實。"
+  }
 ];
 
 let currentQuestion = 0;
