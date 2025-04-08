@@ -72,6 +72,11 @@
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+        img {
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -122,12 +127,12 @@
 
         const scores = [0, 0, 0, 0, 0, 0];
         const resultTexts = [
-            { title: "冒險家型", short: "你天生為自由而生，越困難越興奮！", long: "你是行動派，勇敢無畏，最適合需要挑戰的職場與生活。人生座右銘：不冒險，就是最大的風險。" },
-            { title: "智慧家型", short: "你擁有遠見與智慧，是天生的領導者。", long: "你理性且有深度，擅長策略與規劃。適合管理層、顧問、學者等角色，善於解讀世界運作的規律。" },
-            { title: "藝術家型", short: "你的靈魂為創造而生，總是靈感滿滿！", long: "你對美感與創意非常敏銳，適合藝術、設計、行銷領域，天生能用作品感動人心。" },
-            { title: "守護者型", short: "你溫柔堅定，總是別人最安心的後盾。", long: "你有高度的責任感與耐心，適合教育、照護、社工、醫療領域，是團體中的靈魂支柱。" },
-            { title: "魔法師型", short: "你是奇蹟的製造者，能將不可能變可能。", long: "你擁有強大的直覺力與轉化力，適合創業、心靈工作或任何需要突破框架的領域。" },
-            { title: "夢想家型", short: "你是點燃希望的人，讓世界看見可能。", long: "你充滿理想，容易感染周圍的人，適合創業、非營利組織、創新型產業，是未來世界的種子。" }
+            { title: "冒險家型", image: "https://i.imgur.com/kgd4iEw.png", short: "愛挑戰、熱愛自由，勇於探索新世界。", long: "能量活躍，偏好直接體驗與實作，迅速果斷，享受未知與變化。情感熱情直率，行動力強，適應快速。建議：學習耐心與計劃，避免一時衝動。適合領域：創業、旅遊冒險、活動策劃、行銷推廣。適合搭配：守護者型——提供穩定支持，平衡你的冒險衝動。" },
+            { title: "智慧家型", image: "https://i.imgur.com/9XEIgp2.png", short: "深思熟慮，熱愛知識與探索真理。", long: "沉靜專注，重視邏輯推演與全局思考，以理性與事實為依據，有系統且規劃性高。情感冷靜克制，洞察力強。建議：學習打開心房，讓情感參與生活。適合領域：管理、金融、科技、顧問諮詢。適合搭配：夢想家型——激發你的靈感與創新思考。" },
+            { title: "藝術家型", image: "https://i.imgur.com/GKTXhke.png", short: "敏感細膩，追求美感與自我表達。", long: "情境式開放，憑感受捕捉世界，靈感豐富，以情感和直覺決策。自由奔放，感情真摯。建議：善用紀律與行動，將靈感轉為現實。適合領域：設計、藝術、寫作、品牌行銷。適合搭配：智慧家型——幫助你將靈感具體化並落地實現。" },
+            { title: "守護者型", image: "https://i.imgur.com/FGjc1Nt.png", short: "溫柔穩定，重視責任與安全感。", long: "內斂沉著，務實重細節，考慮人際與價值感受。有條理，情感深情可靠。建議：學習適時放手，避免過度負擔他人。適合領域：教育、心理輔導、醫療照護、社工。適合搭配：冒險家型——帶你體驗世界的多彩面貌。" },
+            { title: "魔法師型", image: "https://i.imgur.com/Wg4xAe0.png", short: "直覺敏銳，擁有改變世界的能量。", long: "自由變化，綜合感覺與預見，靈活直覺，突破常規。情感神秘而深層。建議：練習保持專注，避免能量分散。適合領域：創業、心靈療癒、新科技領域、變革推動。適合搭配：藝術家型——激盪出驚人的創造火花。" },
+            { title: "夢想家型", image: "https://i.imgur.com/IXJH2lY.png", short: "充滿希望，善於啟發與感動人心。", long: "隨心而動，注重大局與願景，憑信念與價值驅動。靈活自由，情感溫暖開放。建議：細化夢想為具體行動，避免流於空想。適合領域：社會創新、教育、領導發展、社群經營。適合搭配：魔法師型——共同把夢想轉化為現實。" }
         ];
 
         let currentQuestion = 0;
@@ -168,7 +173,24 @@
             let maxIndex = scores.indexOf(Math.max(...scores));
             let res = resultTexts[maxIndex];
             document.getElementById('result').style.display = 'block';
-            document.getElementById('result').innerHTML = `<h2>${res.title}</h2><p>${res.short}</p><p>${res.long}</p>`;
+            document.getElementById('result').innerHTML = `
+                <h2>${res.title}</h2>
+                <img src="${res.image}" alt="${res.title}">
+                <p>${res.short}</p>
+                <p>${res.long}</p>
+                <button onclick="shareResult()">📤 分享你的結果</button>
+            `;
+        }
+
+        function shareResult() {
+            const resultText = document.getElementById('result').innerText;
+            const shareMessage = `${resultText}\n🔗 測你的靈魂原型 👉 ${window.location.href}`;
+
+            navigator.clipboard.writeText(shareMessage).then(() => {
+                alert('結果已複製！快去貼給朋友炫耀吧～✨');
+            }).catch(err => {
+                alert('複製失敗，請手動複製喔！');
+            });
         }
     </script>
 </body>
